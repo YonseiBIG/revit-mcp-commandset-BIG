@@ -1,0 +1,170 @@
+{
+  "name": "RevitMCPCommandSet",
+  "description": "Basic command collection for Revit AI assistance",
+  "developer": {
+    "name": "revit-mcp",
+    "email": "",
+    "website": "",
+    "organization": "revit-mcp"
+  },
+  "commands": [
+    {
+      "commandName": "say_hello",
+      "description": "Displays a greeting dialog",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+    {
+      "commandName": "get_available_family_types",
+      "description": "get available family types",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+    {
+      "commandName": "get_current_view_elements",
+      "description": "get current view elements",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+    {
+      "commandName": "get_current_view_info",
+      "description": "get current view info",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+    {
+      "commandName": "create_Wall",
+      "description": "create a wall",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+    {
+      "commandName": "delete_element",
+      "description": "Deletes elements using ElementId",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "tag_all_walls",
+      "description": "Tag all the walls in the model",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "create_line_based_element",
+      "description": "Create line based element such as wall",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "export_room_data",
+      "description": "Extract all rooms with detailed properties including area, volume, perimeter, and parameters",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_material_quantities",
+      "description": "Calculate material quantities and takeoffs with area and volume calculations per material",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "analyze_model_statistics",
+      "description": "Analyze model complexity with element counts by category, type, family, and level",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    }
+,
+	{
+      "commandName": "create_grid",
+      "description": "Create grid system with smart spacing generation for project layout (alphabetic/numeric naming)",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    }
+,
+	{
+      "commandName": "create_structural_framing_system",
+      "description": "Create structural beam framing system with configurable spacing and direction",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    }
+,
+	{
+      "commandName": "send_code_to_revit",
+      "description": "send code to revit",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_rooms_by_name",
+      "description": "Get rooms by their names",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_levels_by_name",
+      "description": "Get levels by their names",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "find_elements_by_level",
+      "description": "Find elements associated with specific levels (wall, beam, column, floor)",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "find_elements_by_room",
+      "description": "Find elements associated with specific rooms using boundary geometry",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "find_hosted_elements",
+      "description": "Find elements hosted on specific elements (doors/windows on walls)",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_adjacent_rooms",
+      "description": "Get rooms adjacent to a specific element",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_elements_by_type",
+      "description": "Get all element instances that use a specific element type",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "change_wall_type",
+      "description": "Change the WallType of existing wall instances",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "change_beam_type",
+      "description": "Change the FamilySymbol of existing beam instances",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "change_column_type",
+      "description": "Change the FamilySymbol of existing column instances",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "change_door_type",
+      "description": "Change the FamilySymbol of existing door instances",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "change_floor_type",
+      "description": "Change the FloorType of existing floor instances",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "change_window_type",
+      "description": "Change window family while preserving original dimensions",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "create_wall_type",
+      "description": "Create a new WallType with compound structure layers",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_wall_type_info",
+      "description": "Get wall type compound structure details",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "create_door_type",
+      "description": "Create a new door type with specified dimensions",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "create_window_type",
+      "description": "Create a new window type with specified dimensions",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    }
+  ]
+}
