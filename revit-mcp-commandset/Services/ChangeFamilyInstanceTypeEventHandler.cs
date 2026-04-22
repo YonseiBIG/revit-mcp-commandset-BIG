@@ -15,8 +15,8 @@ namespace RevitMCPCommandSet.Services
     public class ChangeFamilyInstanceTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public AIResult<List<int>> Result { get; private set; }
-        public List<int> ElementIds { get; set; }
-        public string TargetSymbolName { get; set; }
+        public List<int> ElementIds { get; private set; }
+        public string TargetSymbolName { get; private set; }
 
         private readonly BuiltInCategory _category;
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
@@ -24,6 +24,13 @@ namespace RevitMCPCommandSet.Services
         public ChangeFamilyInstanceTypeEventHandler(BuiltInCategory category)
         {
             _category = category;
+        }
+
+        public void SetParameters(List<int> elementIds, string targetSymbolName)
+        {
+            ElementIds = elementIds;
+            TargetSymbolName = targetSymbolName;
+            _resetEvent.Reset();
         }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)

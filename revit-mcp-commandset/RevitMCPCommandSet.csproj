@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <UseWPF>true</UseWPF>
@@ -58,7 +58,7 @@
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy /y /i &quot;$(TargetDir)*.dll&quot; &quot;$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\revit_mcp_plugin\Commands\RevitMCPCommandSet\$(RevitVersion)&quot;&#xD;&#xA;xcopy /y /i &quot;$(TargetDir)*.pdb&quot; &quot;$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\revit_mcp_plugin\Commands\RevitMCPCommandSet\$(RevitVersion)&quot;&#xD;&#xA;xcopy /y &quot;$(ProjectDir)..\command.json&quot; &quot;$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\revit_mcp_plugin\Commands\RevitMCPCommandSet\&quot;" />
+		<Exec Command="xcopy /y /i &quot;$(TargetDir)*.dll&quot; &quot;$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\revit_mcp_plugin\Commands\RevitMCPCommandSet-BIG\$(RevitVersion)&quot;&#xD;&#xA;xcopy /y /i &quot;$(TargetDir)*.pdb&quot; &quot;$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\revit_mcp_plugin\Commands\RevitMCPCommandSet-BIG\$(RevitVersion)&quot;&#xD;&#xA;xcopy /y &quot;$(ProjectDir)..\command.json&quot; &quot;$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\revit_mcp_plugin\Commands\RevitMCPCommandSet-BIG\&quot;" />
 	</Target>
 
 </Project>

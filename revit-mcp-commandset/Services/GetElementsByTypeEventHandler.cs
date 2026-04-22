@@ -12,10 +12,17 @@ namespace RevitMCPCommandSet.Services
     public class GetElementsByTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public List<ElementInfo> Result { get; private set; }
-        public string TypeName { get; set; }
-        public string CategoryName { get; set; }
+        public string TypeName { get; private set; }
+        public string CategoryName { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(string typeName, string categoryName)
+        {
+            TypeName = typeName;
+            CategoryName = categoryName;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

@@ -27,8 +27,7 @@ namespace RevitMCPCommandSet.Commands
                 if (elementIds == null || string.IsNullOrEmpty(familyName))
                     throw new ArgumentException("elementIds and familyName are required");
 
-                _handler.ElementIds = elementIds;
-                _handler.TargetFamilyName = familyName;
+                _handler.SetParameters(elementIds, familyName);
 
                 if (RaiseAndWaitForCompletion(30000))
                     return _handler.Result;

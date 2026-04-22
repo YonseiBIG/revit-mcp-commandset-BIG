@@ -18,10 +18,17 @@ namespace RevitMCPCommandSet.Services
     public class ChangeWindowTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public AIResult<List<int>> Result { get; private set; }
-        public List<int> ElementIds { get; set; }
-        public string TargetFamilyName { get; set; }
+        public List<int> ElementIds { get; private set; }
+        public string TargetFamilyName { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(List<int> elementIds, string targetFamilyName)
+        {
+            ElementIds = elementIds;
+            TargetFamilyName = targetFamilyName;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

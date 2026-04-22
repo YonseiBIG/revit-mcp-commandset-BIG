@@ -12,9 +12,15 @@ namespace RevitMCPCommandSet.Services
     public class GetLevelsByNameEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public List<ElementInfo> Result { get; private set; }
-        public List<string> LevelNames { get; set; }
+        public List<string> LevelNames { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(List<string> levelNames)
+        {
+            LevelNames = levelNames;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

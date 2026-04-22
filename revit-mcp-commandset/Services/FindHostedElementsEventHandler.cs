@@ -12,10 +12,17 @@ namespace RevitMCPCommandSet.Services
     public class FindHostedElementsEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public List<ElementInfo> Result { get; private set; }
-        public List<int> HostElementIds { get; set; }
-        public string Category { get; set; }
+        public List<int> HostElementIds { get; private set; }
+        public string Category { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(List<int> hostElementIds, string category)
+        {
+            HostElementIds = hostElementIds;
+            Category = category;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

@@ -12,10 +12,17 @@ namespace RevitMCPCommandSet.Services
     public class ChangeFloorTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public AIResult<List<int>> Result { get; private set; }
-        public List<int> ElementIds { get; set; }
-        public string FloorTypeName { get; set; }
+        public List<int> ElementIds { get; private set; }
+        public string FloorTypeName { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(List<int> elementIds, string floorTypeName)
+        {
+            ElementIds = elementIds;
+            FloorTypeName = floorTypeName;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

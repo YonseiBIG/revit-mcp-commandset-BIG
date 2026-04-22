@@ -26,8 +26,7 @@ namespace RevitMCPCommandSet.Commands.Access
                 if (string.IsNullOrEmpty(typeName) || string.IsNullOrEmpty(category))
                     throw new ArgumentException("typeName and category are required");
 
-                _handler.TypeName = typeName;
-                _handler.CategoryName = category;
+                _handler.SetParameters(typeName, category);
 
                 if (RaiseAndWaitForCompletion(15000))
                 {

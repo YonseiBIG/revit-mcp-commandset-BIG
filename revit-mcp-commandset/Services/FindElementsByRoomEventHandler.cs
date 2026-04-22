@@ -13,10 +13,17 @@ namespace RevitMCPCommandSet.Services
     public class FindElementsByRoomEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public List<ElementInfo> Result { get; private set; }
-        public List<string> RoomNames { get; set; }
-        public string Category { get; set; }
+        public List<string> RoomNames { get; private set; }
+        public string Category { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(List<string> roomNames, string category)
+        {
+            RoomNames = roomNames;
+            Category = category;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

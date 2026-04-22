@@ -12,10 +12,17 @@ namespace RevitMCPCommandSet.Services
     public class ChangeWallTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public AIResult<List<int>> Result { get; private set; }
-        public List<int> ElementIds { get; set; }
-        public string WallTypeName { get; set; }
+        public List<int> ElementIds { get; private set; }
+        public string WallTypeName { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(List<int> elementIds, string wallTypeName)
+        {
+            ElementIds = elementIds;
+            WallTypeName = wallTypeName;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

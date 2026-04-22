@@ -17,9 +17,15 @@ namespace RevitMCPCommandSet.Services
     public class CreateWallTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public AIResult<string> Result { get; private set; }
-        public WallTypeCreationInfo CreationInfo { get; set; }
+        public WallTypeCreationInfo CreationInfo { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(WallTypeCreationInfo creationInfo)
+        {
+            CreationInfo = creationInfo;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

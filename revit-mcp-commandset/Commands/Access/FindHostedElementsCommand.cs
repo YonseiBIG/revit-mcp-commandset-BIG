@@ -27,8 +27,7 @@ namespace RevitMCPCommandSet.Commands.Access
                 if (hostElementIds == null || string.IsNullOrEmpty(category))
                     throw new ArgumentException("hostElementIds and category are required");
 
-                _handler.HostElementIds = hostElementIds;
-                _handler.Category = category;
+                _handler.SetParameters(hostElementIds, category);
 
                 if (RaiseAndWaitForCompletion(15000))
                 {

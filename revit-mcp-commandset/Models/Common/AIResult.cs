@@ -1,19 +1,19 @@
-﻿namespace RevitMCPCommandSet.Models.Common;
+namespace RevitMCPCommandSet.Models.Common;
 
 public class AIResult<T>
 {
     /// <summary>
-    ///     是否成功
+    ///     Whether the operation succeeded
     /// </summary>
     public bool Success { get; set; }
 
     /// <summary>
-    ///     消息
+    ///     Message
     /// </summary>
     public string Message { get; set; }
 
     /// <summary>
-    ///     返回数据
+    ///     Response data
     /// </summary>
     public T Response { get; set; }
 }

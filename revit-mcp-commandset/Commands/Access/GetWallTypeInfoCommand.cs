@@ -25,7 +25,7 @@ namespace RevitMCPCommandSet.Commands.Access
                 if (string.IsNullOrEmpty(wallTypeName))
                     throw new ArgumentException("wallTypeName is required");
 
-                _handler.WallTypeName = wallTypeName;
+                _handler.SetParameters(wallTypeName);
 
                 if (RaiseAndWaitForCompletion(15000))
                     return _handler.Result;

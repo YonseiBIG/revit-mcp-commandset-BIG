@@ -25,7 +25,7 @@ namespace RevitMCPCommandSet.Commands.Access
                 if (elementId == null)
                     throw new ArgumentException("elementId is required");
 
-                _handler.TargetElementId = elementId.Value;
+                _handler.SetParameters(elementId.Value);
 
                 if (RaiseAndWaitForCompletion(15000))
                 {

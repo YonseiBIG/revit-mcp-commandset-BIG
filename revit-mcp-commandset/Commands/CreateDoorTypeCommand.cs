@@ -27,9 +27,7 @@ namespace RevitMCPCommandSet.Commands
                 if (string.IsNullOrEmpty(familyName) || width == null || height == null)
                     throw new ArgumentException("familyName, width, and height are required");
 
-                _handler.FamilyName = familyName;
-                _handler.Width = width.Value;
-                _handler.Height = height.Value;
+                _handler.SetParameters(familyName, width.Value, height.Value);
 
                 if (RaiseAndWaitForCompletion(15000))
                     return _handler.Result;

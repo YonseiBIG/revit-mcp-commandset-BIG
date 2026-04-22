@@ -26,7 +26,7 @@ namespace RevitMCPCommandSet.Commands
                 if (info == null || string.IsNullOrEmpty(info.WallTypeName) || info.Layers == null || info.Layers.Count == 0)
                     throw new ArgumentException("wallTypeName and layers are required");
 
-                _handler.CreationInfo = info;
+                _handler.SetParameters(info);
 
                 if (RaiseAndWaitForCompletion(20000))
                     return _handler.Result;

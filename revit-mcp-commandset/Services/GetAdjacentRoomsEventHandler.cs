@@ -11,9 +11,15 @@ namespace RevitMCPCommandSet.Services
     public class GetAdjacentRoomsEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public List<string> Result { get; private set; }
-        public int TargetElementId { get; set; }
+        public int TargetElementId { get; private set; }
 
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
+
+        public void SetParameters(int targetElementId)
+        {
+            TargetElementId = targetElementId;
+            _resetEvent.Reset();
+        }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {

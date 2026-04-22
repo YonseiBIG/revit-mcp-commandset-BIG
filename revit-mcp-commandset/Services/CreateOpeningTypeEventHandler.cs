@@ -16,9 +16,9 @@ namespace RevitMCPCommandSet.Services
     public class CreateOpeningTypeEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
         public AIResult<string> Result { get; private set; }
-        public string FamilyName { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
+        public string FamilyName { get; private set; }
+        public double Width { get; private set; }
+        public double Height { get; private set; }
 
         private readonly BuiltInCategory _category;
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
@@ -26,6 +26,14 @@ namespace RevitMCPCommandSet.Services
         public CreateOpeningTypeEventHandler(BuiltInCategory category)
         {
             _category = category;
+        }
+
+        public void SetParameters(string familyName, double width, double height)
+        {
+            FamilyName = familyName;
+            Width = width;
+            Height = height;
+            _resetEvent.Reset();
         }
 
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)

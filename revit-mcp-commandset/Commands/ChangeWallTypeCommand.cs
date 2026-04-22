@@ -27,8 +27,7 @@ namespace RevitMCPCommandSet.Commands
                 if (elementIds == null || string.IsNullOrEmpty(wallTypeName))
                     throw new ArgumentException("elementIds and wallTypeName are required");
 
-                _handler.ElementIds = elementIds;
-                _handler.WallTypeName = wallTypeName;
+                _handler.SetParameters(elementIds, wallTypeName);
 
                 if (RaiseAndWaitForCompletion(15000))
                 {

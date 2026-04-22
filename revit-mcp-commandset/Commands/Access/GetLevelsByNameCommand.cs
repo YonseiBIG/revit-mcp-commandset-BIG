@@ -26,7 +26,7 @@ namespace RevitMCPCommandSet.Commands.Access
                 if (levelNames == null || levelNames.Count == 0)
                     throw new ArgumentException("levelNames is required");
 
-                _handler.LevelNames = levelNames;
+                _handler.SetParameters(levelNames);
 
                 if (RaiseAndWaitForCompletion(15000))
                 {

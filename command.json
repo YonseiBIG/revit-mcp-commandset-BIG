@@ -1,11 +1,11 @@
 {
-  "name": "RevitMCPCommandSet",
-  "description": "Basic command collection for Revit AI assistance",
+  "name": "RevitMCPCommandSet-BIG",
+  "description": "Extended command collection for Revit AI assistance (YonseiBIG)",
   "developer": {
-    "name": "revit-mcp",
+    "name": "YonseiBIG",
     "email": "",
-    "website": "",
-    "organization": "revit-mcp"
+    "website": "https://github.com/YonseiBIG",
+    "organization": "YonseiBIG"
   },
   "commands": [
     {
@@ -164,6 +164,11 @@
 	{
       "commandName": "create_window_type",
       "description": "Create a new window type with specified dimensions",
+      "assemblyPath": "RevitMCPCommandSet.dll"
+    },
+	{
+      "commandName": "get_available_materials",
+      "description": "Get all available materials in the current Revit project",
       "assemblyPath": "RevitMCPCommandSet.dll"
     }
   ]

@@ -27,8 +27,7 @@ namespace RevitMCPCommandSet.Commands
                 if (elementIds == null || string.IsNullOrEmpty(floorTypeName))
                     throw new ArgumentException("elementIds and floorTypeName are required");
 
-                _handler.ElementIds = elementIds;
-                _handler.FloorTypeName = floorTypeName;
+                _handler.SetParameters(elementIds, floorTypeName);
 
                 if (RaiseAndWaitForCompletion(15000))
                     return _handler.Result;

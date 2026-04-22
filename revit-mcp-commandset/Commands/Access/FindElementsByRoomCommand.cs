@@ -27,8 +27,7 @@ namespace RevitMCPCommandSet.Commands.Access
                 if (roomNames == null || string.IsNullOrEmpty(category))
                     throw new ArgumentException("roomNames and category are required");
 
-                _handler.RoomNames = roomNames;
-                _handler.Category = category;
+                _handler.SetParameters(roomNames, category);
 
                 if (RaiseAndWaitForCompletion(30000))
                 {

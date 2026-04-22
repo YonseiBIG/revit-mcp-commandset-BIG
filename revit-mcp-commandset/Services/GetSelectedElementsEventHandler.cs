@@ -1,4 +1,4 @@
-﻿using Autodesk.Revit.UI;
+using Autodesk.Revit.UI;
 using RevitMCPCommandSet.Models.Common;
 using RevitMCPSDK.API.Interfaces;
 using System;
@@ -11,17 +11,26 @@ namespace RevitMCPCommandSet.Services
 {
     public class GetSelectedElementsEventHandler : IExternalEventHandler, IWaitableExternalEventHandler
     {
-        // 执行结果
+        // Execution result
         public List<Models.Common.ElementInfo> ResultElements { get; private set; }
 
-        // 状态同步对象
+        // State synchronization object
         public bool TaskCompleted { get; private set; }
         private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
 
-        // 限制返回的元素数量
-        public int? Limit { get; set; }
+        // Limit on the number of elements to return
+        public int? Limit { get; private set; }
 
-        // 实现IWaitableExternalEventHandler接口
+        /// <summary>
+        /// Set the query parameters
+        /// </summary>
+        public void SetParameters(int? limit)
+        {
+            Limit = limit;
+            _resetEvent.Reset();
+        }
+
+        // IWaitableExternalEventHandler interface implementation
         public bool WaitForCompletion(int timeoutMilliseconds = 10000)
         {
             return _resetEvent.WaitOne(timeoutMilliseconds);
@@ -34,17 +43,17 @@ namespace RevitMCPCommandSet.Services
                 var uiDoc = app.ActiveUIDocument;
                 var doc = uiDoc.Document;
 
-                // 获取当前选中的元素
+                // Get the currently selected elements
                 var selectedIds = uiDoc.Selection.GetElementIds();
                 var selectedElements = selectedIds.Select(id => doc.GetElement(id)).ToList();
 
-                // 应用数量限制
+                // Apply the count limit
                 if (Limit.HasValue && Limit.Value > 0)
                 {
                     selectedElements = selectedElements.Take(Limit.Value).ToList();
                 }
 
-                // 转换为ElementInfo列表
+                // Convert to a list of ElementInfo
                 ResultElements = selectedElements.Select(element => new ElementInfo
                 {
 #if REVIT2024_OR_GREATER
@@ -59,7 +68,7 @@ namespace RevitMCPCommandSet.Services
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Error", "获取选中元素失败: " + ex.Message);
+                TaskDialog.Show("Error", "Failed to retrieve selected elements: " + ex.Message);
                 ResultElements = new List<Models.Common.ElementInfo>();
             }
             finally
@@ -71,7 +80,7 @@ namespace RevitMCPCommandSet.Services
 
         public string GetName()
         {
-            return "获取选中元素";
+            return "Get Selected Elements";
         }
     }
 }
